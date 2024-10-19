@@ -1,0 +1,6 @@
+
+import os
+from openai import OpenAI
+
+my_api_key="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"
+
