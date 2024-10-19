@@ -13,3 +13,15 @@ def genarate_prompts(table_schema, user_i):
         f"Please provide an SQL query that matches the user’s request."
     )
     return prompt
+
+def genarate_prompts_c(re_data):
+    prompt_c = (
+        f"Here is the dataset: {re_data}. "
+        f"The necessary modules (pandas, matplotlib, and seaborn) are already imported. "
+        f"Please generate a Pandas DataFrame from this data using the following format:\n"
+        f"df = pd.DataFrame(data, columns=['Product_name', 'Total_Sales'])\n"
+        f"Create a Seaborn bar chart from the DataFrame (sns.barplot), set the x-axis as 'Product_name' and y-axis as 'Total_Sales'. "
+        f"Make sure to label the chart appropriately with titles and axis labels, and finally display the chart using plt.show(). "
+        f"Do not include redundant imports"
+    )
+    return prompt_c

@@ -8,7 +8,11 @@ import os
 import google.generativeai as genai
 from gemi import *
 from turning_table_to_text import *
-#from prompt_manager import genarate_prompts
+from prompt_manager import genarate_prompts,genarate_prompts_c
+from handling_response import handle_response,hadlie_repnse_c
+from extract_data import handle_data
+from showing_charts import show_ch
+import json
 
 
 
@@ -39,16 +43,21 @@ chat_session = model.start_chat(
 user_i=input("Ask me somthing bro? ")
 db_schema=get_table()
 table_schema="\n".join(f"Table_name: {table} \n"+"\n".join(f"Column_name: {col[0]}, Data_type: {col[1]}, {col[2]} {col[3]}" for col in column) for table,column in db_schema.items() )
-print(table_schema)
+#print(table_schema)
 
-prompt=f"this table is a Database table that created using sqlite3 in a python environment {table_schema} " \
-       f"take a good look at this structure because following questions are base on this and here is the user input: {user_i} your task is to " \
-       f"answer the question that user aks according to previously provided {table_schema} example: what is the qury to retreave all the " \
-       f"items inside TEST table? answer SELECT * FROM TEST"
-
-
-
+prompt=genarate_prompts(table_schema,user_i)
 
 response = chat_session.send_message(prompt)
+qry=handle_response(response.text)
+#print(qry)
+re_data=handle_data(qry)
+prompt_c=genarate_prompts_c(re_data)
+response_c=chat_session.send_message(prompt_c)
+py_c=hadlie_repnse_c(response_c.text)
+show_ch(py_c)
+print(response_c.text)
+#print(response.text)
+#print(response.json())
+#qry=response["sql"]
+#print(qry)
 conn.close()
-print(response.text)

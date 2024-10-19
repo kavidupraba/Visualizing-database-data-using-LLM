@@ -16,9 +16,9 @@ def get_table():
         columns=cursor.fetchall()
         cursor.execute(f"PRAGMA foreign_key_list({table_name});")
         fkey_list=cursor.fetchall()
-        print(fkey_list)#out put is like this:(0, 'orders', 'products', 'product_id', 'id'),  # (id, from_table, to_table, local_column, foreign_column)(1, 'invoices', 'customers', 'customer_id', 'id')
+        #print(fkey_list)#out put is like this:(0, 'orders', 'products', 'product_id', 'id'),  # (id, from_table, to_table, local_column, foreign_column)(1, 'invoices', 'customers', 'customer_id', 'id')
         fk_column={fk[3]:(fk[2],fk[4]) for fk in fkey_list} if fkey_list else {}
-        print(fk_column)
+        #print(fk_column)
         #print(columns)
         #schema[table_name]=[(column[1],column[2]) for column in columns]# the output is like this:[(0, 'ID', 'INTEGER', 0, None, 1), so you have to get the column name!
         schema[table_name]=[]
