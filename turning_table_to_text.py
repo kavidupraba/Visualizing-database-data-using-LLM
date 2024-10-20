@@ -29,12 +29,12 @@ def get_table():
             Foregin_key=f"FOREIGN KEY:(REFERENCE: ({fk_column[column_name][0]},{fk_column[column_name][1]}))"if column_name in fk_column else ""
             schema[table_name].append((column_name,Data_type,Primary_key,Foregin_key))
 
+    # turning schema into readable text for AI
+    table_schema = "\n".join(f"Table_name: {table} \n" + "\n".join(f"Column_name: {col[0]}, Data_type: {col[1]}, {col[2]} {col[3]}" for col in column) for table, column in schema.items())
 
+    return table_schema
 
-
-    return schema
-
-get_table()
+#get_table()
 #print(db_schema)
 #table_schema="\n".join(f"Table_name: {table} \n"+"\n".join(f"Column_name: {col[0]}, Data_type: {col[1]}, {col[2]} {col[3]}" for col in column) for table,column in db_schema.items() )
 #print(table_schema)
