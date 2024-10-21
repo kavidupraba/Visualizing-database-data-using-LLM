@@ -1,8 +1,6 @@
 
-def genarate_prompts(table_schema, user_i):
+def genarate_prompts(user_i):
     prompt = (
-        f"Given the following table schema created using SQLite3 in a Python environment:\n\n"
-        f"{table_schema}\n\n"
         f"Your task is to generate the appropriate SQL queries based on the user's input.\n"
         f"Ensure that the query follows the SQLite3 syntax and correctly references the provided table structure.\n\n"
         f"Here is the user's input: {user_i}\n\n"
@@ -11,8 +9,8 @@ def genarate_prompts(table_schema, user_i):
         f"2. If the user asks 'find the total sales for each product', you should return a query that uses GROUP BY.\n"
         f"3. If the user asks for information on orders, include joins based on foreign key relationships.\n\n"
         f"Please provide an SQL query that matches the user’s request.\n"
-        f"if user tell you to create SQLite3 qry to create table to store data please remember to not to use table names "
-        f"that already in the provided schema otherwise this will make error in the system"
+        f"If the user asks to create a table, ensure not to use table names that are already in the provided schema, "
+        f"as this will cause errors."
     )
     return prompt
 
@@ -34,23 +32,21 @@ def genarate_prompts_c(re_data):
         f"that already in the provided schema otherwise this will make error in the system"
     )
     return prompt_c
-def genarate_prompts_w(table_schema,user_i):
-    prompt=(f"Given the following table schema created using SQLite3 in a Python environment:\n\n"
-            f"{table_schema}\n\n"
-            f"user may ask question from this or he might ask question about other data bse related problems\n"
-            f"if user ask question to create pandas dataframe and create seaborn plots please inform them to give you"
-            f"the command to retrieve necessary  data from database like: example 'retrieve all items from the TEST table'\n"
-            f" inform them after giving this command you can proceed with other tasks like creating table or inserting the "
-            f"database\n"
-            f"and here is the user input: {user_i}\n"
-            f"if user request is of like getting or creating query fallow this examples:\n"
-            f"1. If the user asks 'retrieve all items from the TEST table', you should return: SELECT * FROM TEST;\n"
-            f"2. If the user asks 'find the total sales for each product', you should return a query that uses GROUP BY.\n"
-            f"3. If the user asks for information on orders, include joins based on foreign key relationships.\n\n"
-            f"Please provide an SQL query that matches the user’s request."
-            f"if user tell you to create SQLite3 qry to create table to store data please remember to not to use table names "
-            f"that already in the provided schema otherwise this will make error in the system"
-            )
+def genarate_prompts_w(user_i):
+    prompt = (
+        f"The user may ask questions related to the provided database schema, "
+        f"or may ask about other database-related problems.\n"
+        f"If the user asks to create a pandas DataFrame or seaborn plots, ask them for the command to retrieve necessary data "
+        f"from the database first. For example, they may say 'retrieve all items from the TEST table'.\n"
+        f"Once they provide the data retrieval command, you can proceed with tasks like creating tables or inserting data.\n\n"
+        f"Here is the user's input: {user_i}\n"
+        f"If the request involves creating or retrieving SQL queries, follow these examples:\n"
+        f"1. If the user asks 'retrieve all items from the TEST table', you should return: SELECT * FROM TEST;\n"
+        f"2. If the user asks 'find the total sales for each product', you should return a query that uses GROUP BY.\n"
+        f"3. If the user asks for information on orders, include joins based on foreign key relationships.\n\n"
+        f"Please provide an SQL query that matches the user’s request.\n"
+        f"Also, when creating a table, do not use table names that are already in the provided schema to avoid errors."
+    )
     return prompt
 def genarate_prompt_s():
     prompt=(f"if you face this sinario that means user ask you to make some changes to original database (create table delete some data)\n\n"

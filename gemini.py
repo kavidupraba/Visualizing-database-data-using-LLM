@@ -3,6 +3,7 @@ import os
 import google.generativeai as genai
 from gemi import *
 from call_handler import create_fist_prompt,sending_chart_request,showing_the_charts
+from store_schema import get_file_data
 
 
 
@@ -27,8 +28,13 @@ model = genai.GenerativeModel(
   # See https://ai.google.dev/gemini-api/docs/safety-settings
 )
 
+schema=get_file_data()
+print(schema)
 chat_session = model.start_chat(
   history=[
+    {"role": "user", "parts": "Here is the schema for the database you will be working with:"},
+    {"role": "user", "parts": get_file_data()},
+    {"role": "user", "parts": "Use this schema when answering questions related to database queries or structure."}
   ]
 )
 #user_i=input("Ask me somthing bro? ")

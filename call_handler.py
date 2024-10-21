@@ -7,8 +7,8 @@ from turning_table_to_text import *
 
 #buuilding first prompt
 def create_fist_prompt(user_i):
-    schema=get_table()
-    f_prompt=genarate_prompts(schema,user_i)
+    #schema=get_table()
+    f_prompt=genarate_prompts(user_i)
     #conn.close()
     return f_prompt
 
@@ -44,8 +44,8 @@ def showing_the_charts(response_c):
 
 
 def prompt_without_sql_request(user_i):
-    schema=get_table()
-    prompt_w=genarate_prompts_w(schema,user_i)
+    #schema=get_table()
+    prompt_w=genarate_prompts_w(user_i)
     return prompt_w
 
 
