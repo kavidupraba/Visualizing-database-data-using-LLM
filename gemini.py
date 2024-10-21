@@ -31,15 +31,19 @@ chat_session = model.start_chat(
   history=[
   ]
 )
-user_i=input("Ask me somthing bro? ")
+#user_i=input("Ask me somthing bro? ")
 
 
-prompt=create_fist_prompt(user_i)
-response = chat_session.send_message(prompt)
-prompt_c=sending_chart_request(response.text)
+#prompt=create_fist_prompt(user_i)
+#response = chat_session.send_message(prompt)
+#prompt_c=sending_chart_request(response.text)
 
-response_c=chat_session.send_message(prompt_c)
-showing_the_charts(response_c.text)
+#response_c=chat_session.send_message(prompt_c)
+#showing_the_charts(response_c.text)
+
+def __chat__(prompt):
+  response=chat_session.send_message(prompt)
+  return response.text
 #print(response_c.text)
 
 

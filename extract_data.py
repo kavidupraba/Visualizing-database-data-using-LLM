@@ -10,7 +10,9 @@ def handle_data(qry):
             result=cursor.fetchall()
             print(f"{result}")
             return result
-        conn.commit()
+        else:
+            conn.commit()
+            return None
     else:
         print("FAILD!!!! BOOOOO")
     conn.close()

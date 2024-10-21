@@ -1,9 +1,11 @@
 import sqlite3 as sq
 
-conn=sq.connect("sample_database.db")
-cursor=conn.cursor()
+
 
 def get_table():
+    conn = sq.connect("sample_database.db")
+    cursor = conn.cursor()
+
     cursor.execute("PRAGMA foreign_key=ON;")
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
     tables=cursor.fetchall()
@@ -28,11 +30,13 @@ def get_table():
             Primary_key="PRIMARY KEY" if column[5]==1 else ''
             Foregin_key=f"FOREIGN KEY:(REFERENCE: ({fk_column[column_name][0]},{fk_column[column_name][1]}))"if column_name in fk_column else ""
             schema[table_name].append((column_name,Data_type,Primary_key,Foregin_key))
+    conn.close()
 
     # turning schema into readable text for AI
     table_schema = "\n".join(f"Table_name: {table} \n" + "\n".join(f"Column_name: {col[0]}, Data_type: {col[1]}, {col[2]} {col[3]}" for col in column) for table, column in schema.items())
 
     return table_schema
+
 
 #get_table()
 #print(db_schema)

@@ -20,3 +20,12 @@ def hadlie_repnse_c(response_c):
         return py_code
     else:
         return "No valid pyton code"
+
+#handling Explanation part
+def get_explanation(response_c):
+    E_match=re.search(r"```Explanation(.*?)```",response_c,re.DOTALL)
+    if E_match:
+        Explanation=E_match.group(1).strip()
+        return Explanation
+    else:
+        return "DONE"
