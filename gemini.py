@@ -46,9 +46,18 @@ chat_session = model.start_chat(
 
 #response_c=chat_session.send_message(prompt_c)
 #showing_the_charts(response_c.text)
-
+cash_memory=[]
 def __chat__(prompt):
-  response=chat_session.send_message(prompt)
+  if cash_memory==[]:
+    response = chat_session.send_message(prompt)
+  else:
+    fix_prompt="\n".join([f'{{"role":"{entry["role"]}","parts":"{entry["parts"]}"}}'for entry in cash_memory])
+    fix_prompt+=prompt
+    response=chat_session.send_message(fix_prompt)
+    cash_memory.append({"role":"user","parts":f"{prompt}"})
+    cash_memory.append({"role": "model", "parts": f"{response.text}"})
+
+
   return response.text
 #print(response_c.text)
 

@@ -3,13 +3,14 @@ from store_schema import store_file
 
 
 def handle_data(qry):
-    conn=sq.connect("sample_database.db")
-    cursor=conn.cursor()
+    conn = sq.connect("sample_database.db")
+    cursor = conn.cursor()
 
     if qry != "No valid sql query found":
         print("Executing query:", qry)
 
         if "create table" in qry.lower():
+            #split qry from create table first and pick second half split qry again from '(' then get first half
             table_name = qry.lower().split("create table ")[1].split("(")[0].strip()
             cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{table_name}';")
             table_exists = cursor.fetchone()

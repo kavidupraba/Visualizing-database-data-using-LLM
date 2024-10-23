@@ -3,7 +3,7 @@ npl=spacy.load("en_core_web_sm")
 
 def classify_user_input(user_input):
     doc=npl(user_input.lower())
-    keyword_sql=["select", "from", "where", "count", "total", "query", "database","retrieve","create"]
+    keyword_sql=["select", "from", "where", "count", "total", "query", "database","retrieve","create","add","delete","update"]
 
     #sql_detect=any(key in keyword_sql for key in doc)
     sql_detect=any(token.text in keyword_sql for token in doc)

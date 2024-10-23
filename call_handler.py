@@ -22,7 +22,7 @@ def sending_chart_request(response):
           prompt_c=genarate_prompts_c(re_data)
        else:
           prompt_c=genarate_prompt_s()
-       return prompt_c
+       return prompt_c,re_data
 
 
 
