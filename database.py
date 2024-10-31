@@ -13,6 +13,27 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS ORDERS(ORDER_ID INTEGER PRIMARY KEY
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS INVOICE(INVOICE_ID INTEGER PRIMARY KEY AUTOINCREMENT,ORDER_ID INTEGER,TOTAL_AMOUNT REAL,INVOICE_DATE DATE, FOREIGN KEY(ORDER_ID) REFERENCES ORDERS(ORDER_ID));''')
 
+cursor.execute('''CREATE TABLE IF NOT EXISTS SUPPLIERS(
+                    SUPPLIER_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    SUPPLIER_NAME TEXT,
+                    CONTACT_INFO TEXT);
+               ''')
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS EMPLOYEES(
+                    EMPLOYEE_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    EMPLOYEE_NAME TEXT,
+                    POSITION TEXT,
+                    HIRE_DATE DATE);
+               ''')
+
+cursor.execute('''CREATE TABLE IF NOT EXISTS PAYMENTS(
+                    PAYMENT_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    INVOICE_ID INTEGER,
+                    PAYMENT_DATE DATE,
+                    AMOUNT_PAID REAL,
+                    PAYMENT_METHOD TEXT,
+                    FOREIGN KEY(INVOICE_ID) REFERENCES INVOICE(INVOICE_ID));
+               ''')
 conn.commit()
 conn.close()
 

@@ -11,6 +11,7 @@ def get_table():
     tables=cursor.fetchall()
 
     schema={}
+    #print(tables)
     for table in tables:
         #print(table)#this will come as a tuple so we need to get the table name separately
         table_name=table[0]
@@ -38,7 +39,7 @@ def get_table():
     return table_schema
 
 
-#get_table()
+get_table()
 #print(db_schema)
 #table_schema="\n".join(f"Table_name: {table} \n"+"\n".join(f"Column_name: {col[0]}, Data_type: {col[1]}, {col[2]} {col[3]}" for col in column) for table,column in db_schema.items() )
 #print(table_schema)

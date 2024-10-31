@@ -15,6 +15,7 @@ def genarate_prompts(user_i):
     return prompt
 
 def genarate_prompts_c(re_data):
+    print("Me")
     prompt_c = (
         f"Here is the dataset: {re_data}. "
         f"The necessary modules (pandas, matplotlib, and seaborn) are already imported. "
@@ -22,7 +23,7 @@ def genarate_prompts_c(re_data):
         f"Use the column names from the dataset to create the DataFrame, for example:\n"
         f"df = pd.DataFrame(data, columns=['CUSTOMER_NAME', 'Product_name', 'Amount_Bought'])\n"
         f"or if the dataset includes sales, use:\n"
-        f"df = pd.DataFrame(data, columns=['Product_name', 'Total_Sales']) REMEMBER LAWAYS TRY TO INCLUDE ALL DATA YOU CAN CREATE SUBPLOT'S\n"
+        f"df = pd.DataFrame(data, columns=['Product_name', 'Total_Sales']) REMEMBER ALLWAYS TRY TO INCLUDE ALL DATA YOU CAN CREATE SUBPLOT'S\n"
         f"Feel free to use more advanced visualizations like count plots, box plots, scatter plots, or even subplots if necessary.\n"
         f"Consider using scatter plots if there's a correlation between variables, count plots for frequency distributions, etc. "
         f"Generate subplots if the data can be split into multiple visualizations for better clarity.(if there to visualize data if it takes more plots use subplot)\n"
@@ -33,6 +34,7 @@ def genarate_prompts_c(re_data):
     )
     return prompt_c
 def genarate_prompts_w(user_i):
+    print("Me")
     prompt = (
         f"The user may ask questions related to the provided database schema, "
         f"or may ask about other database-related problems.\n"

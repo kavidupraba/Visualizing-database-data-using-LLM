@@ -7,6 +7,7 @@ def store_file():
         json.dump(schema,f)
 
 def get_file_data():
+    store_file()
     with open("schema.json","r",encoding='utf-8') as f:
         schema_L=json.load(f)
     return schema_L
