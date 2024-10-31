@@ -42,3 +42,7 @@ Improvements:
 •	Comparison with other LLMs: Compare similar models like ChatGPT-3.5 and even newer ones that boast better performance and quality of interaction.
 Conclusion
 This project allows users who don’t have prior knowledge about data visualization and coding to interact with databases and make changes.and it simplifies complex SQL tasks. Future improvements aim to enhance flexibility, error handling, and data visualization capabilities.
+![image](https://github.com/user-attachments/assets/d5467c84-3529-4134-b692-441afe486230)
+![image](https://github.com/user-attachments/assets/8e990243-5a34-4244-b9ae-a8fc75ee50f2)
+![image](https://github.com/user-attachments/assets/04404ddc-796c-4efe-8356-67183091ba7e)
+
